@@ -1,0 +1,78 @@
+--Tipos de nodos
+
+    Un nodo es lo mismo que una etiqueta html y su contenido
+
+    <html>
+        <head>
+
+        <body>
+            <div class = "container">
+
+            <footer>
+    
+--Expresiones en Xpath
+
+    '/' la raiz del documento, salto entre nodos
+    '/html' nodo html
+    '//h1' selecciona todos los nodos de tipo h1
+    '//h1/text()' el texto que contiene ese nodo
+    '//span/..' todos los nodos padre, es decir los que esta arriba de span
+    '//span/.' nodo actual
+    '//span/@class' extraer el atributo del nodo
+
+--Predicados Xpath
+
+    '/html/body/div/div[1]' Predicado mas sencillo, el primer div de la lista
+
+    '/html/body/div/div[last()]' El ultimo div de la lista
+
+    '//span[@class]' Todos los nodos de tipo span, que tienen por lo menos un atributo de tipo class
+
+    '//span[@class="text"]' Todos los nodos en los que el atributo clase sea igual a text
+    
+--Operadores en Xpath
+
+    '//span[@class!="texto"]' Todos los span que tienen una clase distinta de texto
+    
+    '/html/body/div/div[position()>1]' 
+
+    '//span[class="text and @class="tag-item"]' Operador and 
+
+    '//span[class="text or @class="tag-item"]' Operador or
+
+    '//span[not (@class)]'  Todos los span que NO tienen un atributo de tipo class
+
+--Wildcards (comodines) en Xpath
+
+    '/html/*' todos los nodos que esta inmediatamente despues de html en este caso head y body
+
+    '//*' Saltar todos los niveles en todas las direcciones, esta expresion nos trae todos los nodos y todos los atributos
+
+    '//span[@class="text"]/@*' Todos los atributos de todos los nodos de tipo span con class = text
+
+    '/html/body//div/@*' Todos los atributos de todos los div que estan despues de body
+
+    '//span[@class="text" and @itemprop="text"]/node()' Trae todo lo que esta dentro de los span que cumplen las condiciones}
+
+    node() a diferencia de * trae el contenido por ejemplo el texto
+
+-- In-text search  en Xpath (Buscar dentro de los nodos)
+
+    '//small[@class="author" and starts-with(., "A")]/text()' Todos los autores que tienen un nombre que comienzan con la letra
+
+    '//small[@class="author" and contains(., "Ro")]/text()' Los autoroes que contienen Ro
+
+    '//small[@class="author" and ends-with(., "t")]/text()'
+
+    '//small[@class="author" and matches(., "t")]/text()' Matches sirve para hacer una busqueda en el nodo que coincida con cierta expresion regular
+
+--Xpath Axes
+
+    '/html/body/div/self::div' = '/html/body/div/.'
+
+    '/html/body/div/child::div' nos trae los hijos del div
+
+    '/html/body/div/descendant::div' Todos los descendicnetes
+
+    '/html/body/div/descendant-or-self::div' La union entre los descendientes de este nodo y del nodo mismo
+    
